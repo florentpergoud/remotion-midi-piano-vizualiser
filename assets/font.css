@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro');
+
+@font-face {
+    font-family: 'DSEG7-Classic';
+    src: url('./fonts/DSEG7-Classic/DSEG7Classic-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DSEG7-Modern';
+    src: url('./fonts/DSEG7-Modern/DSEG7Modern-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DSEG14-Modern';
+    src: url('./fonts/DSEG14-Modern/DSEG14Modern-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}

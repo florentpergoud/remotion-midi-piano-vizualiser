@@ -1,20 +1,30 @@
 import React from 'react';
-import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
-import styled from 'styled-components';
+import { AbsoluteFill } from 'remotion';
+import styled, { ThemeProvider } from 'styled-components';
+import { theme } from '../assets/theme';
+import { Thermometer } from './components/Thermometer';
 
 export const ThermometerScene: React.FC = () => {
-	const frame = useCurrentFrame();
-	const videoConfig = useVideoConfig();
-
-	return (
-		<Container>
-			<Background />
-		</Container>
-	);
+    return (
+        <ThemeProvider theme={theme}>
+            <Container>
+                <Background />
+                <ContentContainer>
+                    <StyledThermometer />
+                </ContentContainer>
+            </Container>
+        </ThemeProvider>
+    );
 };
 
 const Container = styled.div``;
 
-const Background = styled(AbsoluteFill)`
-	background-color: grey;
+const Background = styled(AbsoluteFill)``;
+
+const ContentContainer = styled(AbsoluteFill)``;
+
+const StyledThermometer = styled(Thermometer)`
+    height: 400px;
+    width: 400px;
+    margin: auto;
 `;
