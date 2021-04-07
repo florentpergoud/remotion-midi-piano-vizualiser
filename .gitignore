@@ -1,3 +1,7 @@
 node_modules
 dist
 .DS_Store
+.env
+out.mp4
+src/api/rawData.json
+secrets.json

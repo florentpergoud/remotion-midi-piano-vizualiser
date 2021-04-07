@@ -2,15 +2,14 @@ import React from 'react';
 import { AbsoluteFill } from 'remotion';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../assets/theme';
-import { Thermometer } from './components/Thermometer';
+import { WeatherMap } from './components/WeatherMap';
 
-export const ThermometerScene: React.FC = () => {
+export const WeatherScene: React.FC = () => {
     return (
         <ThemeProvider theme={theme}>
             <Container>
-                <Background />
                 <ContentContainer>
-                    <StyledThermometer />
+                    <WeatherMap />
                 </ContentContainer>
             </Container>
         </ThemeProvider>
@@ -19,12 +18,4 @@ export const ThermometerScene: React.FC = () => {
 
 const Container = styled.div``;
 
-const Background = styled(AbsoluteFill)``;
-
 const ContentContainer = styled(AbsoluteFill)``;
-
-const StyledThermometer = styled(Thermometer)`
-    height: 400px;
-    width: 400px;
-    margin: auto;
-`;

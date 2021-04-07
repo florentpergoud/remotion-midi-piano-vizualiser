@@ -1,8 +1,7 @@
-
 {
-	"name": "tik-tok-talking-machine",
+	"name": "remotion-weather",
 	"version": "1.0.0",
-	"description": "A tik tok video generator",
+	"description": "A weather video generator",
 	"scripts": {
 		"start": "remotion preview src/index.tsx",
 		"build": "node src/getCurrentAmount.js && remotion render src/index.tsx CrowdfundingEvolution out.mp4 && node src/upload.js",
@@ -22,8 +21,11 @@
 		"@types/react": "^17.0.0",
 		"@types/react-native": "^0.63.50",
 		"@types/styled-components": "^5.1.7",
+		"dotenv": "^8.2.0",
 		"eslint": "^7.21.0",
 		"express": "^4.17.1",
+		"node-fetch": "^2.6.1",
+		"openweather-apis": "^4.4.1",
 		"polished": "^4.1.1",
 		"prettier": "^2.2.1",
 		"prettier-plugin-organize-imports": "^1.1.1",

@@ -1,5 +1,6 @@
-import {Config} from 'remotion';
+import { Config } from 'remotion';
 
-Config.Output.setCodec('h264');
 Config.Output.setImageSequence(false);
-Config.Rendering.setImageFormat('jpeg');
+Config.Rendering.setImageFormat('png');
+Config.Output.setPixelFormat('yuva420p');
+Config.Output.setCodec('vp8');

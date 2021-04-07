@@ -1,16 +1,19 @@
 import { Composition } from 'remotion';
 import '../assets/font.css';
-import { ThermometerScene } from './ThermometerScene';
+import { WeatherScene } from './WeatherScene';
+
+const DURATION_IN_SECONDS = 5;
+const FPS = 30;
 
 export const RemotionVideo: React.FC = () => {
     return (
         <Composition
-            id="ThermometerScene"
-            component={ThermometerScene}
-            durationInFrames={150}
-            fps={30}
-            width={1080}
-            height={1920}
+            id="WeatherScene"
+            component={WeatherScene}
+            durationInFrames={FPS * DURATION_IN_SECONDS}
+            fps={FPS}
+            width={1920}
+            height={1080}
         />
     );
 };
