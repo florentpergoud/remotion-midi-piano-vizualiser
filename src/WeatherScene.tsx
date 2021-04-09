@@ -1,38 +1,20 @@
 import React from 'react';
+import { AbsoluteFill, Img } from 'remotion';
 import styled, { ThemeProvider } from 'styled-components';
+import Background from '../assets/Background.jpg';
 import { theme } from '../assets/theme';
-import { WeatherIcon } from './components/WeatherIcon';
 import { WeatherMap } from './components/WeatherMap';
-import { useGetWeatherData } from './useGetWeatherData';
-
-const citiesPosition: {
-    [city: string]: {
-        top: string;
-        left: string;
-    };
-} = {
-    paris: {
-        top: '24',
-        left: '46',
-    },
-};
+import { MapLegend } from './MapLegend';
 
 export const WeatherScene: React.FC = () => {
-    const { weatherDataByCity } = useGetWeatherData();
     return (
         <ThemeProvider theme={theme}>
+            <AbsoluteFill>
+                <BackgroundImage src={Background} />
+            </AbsoluteFill>
             <ContentContainer>
-                {weatherDataByCity.map((city) => {
-                    const cityPosition = citiesPosition[city.cityName.toLowerCase()];
-                    return (
-                        <StyledWeatherIcon
-                            top={cityPosition.top}
-                            left={cityPosition.left}
-                            icon={city.weathers[0].weatherIcon}
-                        />
-                    );
-                })}
-                <WeatherMap />
+                <StyledMapLegend />
+                <StyledWeatherMap />
             </ContentContainer>
         </ThemeProvider>
     );
@@ -44,8 +26,17 @@ const ContentContainer = styled.div`
     width: 50%;
 `;
 
-const StyledWeatherIcon = styled(WeatherIcon)<{ top: string; left: string }>`
+const StyledWeatherMap = styled(WeatherMap)`
     position: absolute;
-    top: ${({ top }) => top}%;
-    left: ${({ left }) => left}%;
+    margin-top: 60px;
+`;
+
+const StyledMapLegend = styled(MapLegend)`
+    position: absolute;
+    margin-top: 20px;
+`;
+
+const BackgroundImage = styled(Img)`
+    height: 100%;
+    width: 100%;
 `;

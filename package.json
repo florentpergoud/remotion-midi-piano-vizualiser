@@ -4,7 +4,7 @@
 	"description": "A weather video generator",
 	"scripts": {
 		"start": "remotion preview src/index.tsx",
-		"build": "node src/getCurrentAmount.js && remotion render src/index.tsx CrowdfundingEvolution out.mp4 && node src/upload.js",
+		"build": "node src/api.js && remotion render src/index.tsx WeatherScene out.mp4",
 		"upgrade": "remotion upgrade",
 		"server": "ts-node server.tsx",
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc",
