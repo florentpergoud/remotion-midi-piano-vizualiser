@@ -17,10 +17,12 @@ export const WeatherMap: FunctionComponent<Props> = ({ className }) => {
     return (
         <Container className={className}>
             <CityContainer>
-                {weatherDataByCity.map((city) => {
+                {weatherDataByCity.map((city, index) => {
                     const top = transformLatToMapTopPosition(city.lat);
                     const left = transformLongToMapLeftPosition(city.lon);
-                    return <StyledWeatherIcon $top={top} $left={left} icon={city.weathers[0].weatherIcon} />;
+                    return (
+                        <StyledWeatherIcon key={index} $top={top} $left={left} icon={city.weathers[0].weatherIcon} />
+                    );
                 })}
             </CityContainer>
             <WeatherMapBackground />
@@ -46,8 +48,8 @@ const CityContainer = styled.div`
 
 const StyledWeatherIcon = styled(WeatherIcon)<{ $top: number; $left: number }>`
     position: absolute;
-    top: ${({ $top }) => $top - 0.5}%;
-    left: ${({ $left }) => $left - 0.5}%;
+    top: ${({ $top }) => $top - 1}%;
+    left: ${({ $left }) => $left - 1}%;
     z-index: 2;
     height: ${ICON_SIZE}px;
     width: ${ICON_SIZE}px;

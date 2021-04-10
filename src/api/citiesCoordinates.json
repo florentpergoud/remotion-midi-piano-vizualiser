@@ -7,7 +7,7 @@
     {
         "name": "Marseille",
         "lat": 43.280555,
-        "lon": 5.2404125
+        "lon": 5.3
     },
     {
         "name": "Lyon",
@@ -45,6 +45,11 @@
         "lon": -0.6561809
     },
     {
+        "name": "Dunkerque",
+        "lat": 51.0169832,
+        "lon": 2.2730449
+    },
+    {
         "name": "Lille",
         "lat": 50.6311167,
         "lon": 3.0121411
@@ -58,16 +63,6 @@
         "name": "Reims",
         "lat": 49.253642,
         "lon": 3.9850488
-    },
-    {
-        "name": "Toulon",
-        "lat": 43.1364183,
-        "lon": 5.8984116
-    },
-    {
-        "name": "Saint-Étienne",
-        "lat": 45.4242091,
-        "lon": 4.2964246
     },
     {
         "name": "Caen",
@@ -98,11 +93,6 @@
         "name": "Le Mans",
         "lat": 47.9819911,
         "lon": 0.1256527
-    },
-    {
-        "name": "Dunkerque",
-        "lat": 51.0169832,
-        "lon": 2.2730449
     },
     {
         "name": "Brest",
@@ -171,12 +161,12 @@
     },
     {
         "name": "Metz",
-        "lat": 49.1049442,
+        "lat": 49.15,
         "lon": 6.1263663
     },
     {
         "name": "Nancy",
-        "lat": 48.688108,
+        "lat": 48.63,
         "lon": 6.1559274
     },
     {
@@ -258,5 +248,35 @@
         "name": "Bastia",
         "lat": 42.6860668,
         "lon": 9.3890011
+    },
+    {
+        "name": "Angoulème",
+        "lat": 45.6458756,
+        "lon": 0.11002
+    },
+    {
+        "name": "Chartres",
+        "lat": 48.4481021,
+        "lon": 1.4696086
+    },
+    {
+        "name": "Chaumont",
+        "lat": 48.0882118,
+        "lon": 5.1025272
+    },
+    {
+        "name": "Le Puy-en-Velay",
+        "lat": 45.0284694,
+        "lon": 3.8620796
+    },
+    {
+        "name": "Saint-Brieuc",
+        "lat": 48.5108361,
+        "lon": -2.8007389
+    },
+    {
+        "name": "Charleville-Mézières",
+        "lat": 49.7802932,
+        "lon": 4.6603383
     }
 ]
