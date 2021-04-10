@@ -5,6 +5,8 @@ import { transformLatToMapTopPosition, transformLongToMapLeftPosition } from './
 import { WeatherIcon } from './WeatherIcon';
 import { WeatherMapBackground } from './WeatherMapBackground';
 
+const ICON_SIZE = 74;
+
 interface Props {
     className?: string;
 }
@@ -44,7 +46,9 @@ const CityContainer = styled.div`
 
 const StyledWeatherIcon = styled(WeatherIcon)<{ $top: number; $left: number }>`
     position: absolute;
-    top: ${({ $top }) => $top - 1.5}%;
-    left: ${({ $left }) => $left - 2}%;
+    top: ${({ $top }) => $top - 0.5}%;
+    left: ${({ $left }) => $left - 0.5}%;
     z-index: 2;
+    height: ${ICON_SIZE}px;
+    width: ${ICON_SIZE}px;
 `;
