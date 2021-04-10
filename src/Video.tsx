@@ -1,6 +1,6 @@
 import { Composition } from 'remotion';
 import '../assets/font.css';
-import { WeatherScene } from './WeatherScene';
+import { WeatherComposition } from './WeatherComposition';
 
 const DURATION_IN_SECONDS = 5;
 const FPS = 30;
@@ -8,8 +8,8 @@ const FPS = 30;
 export const RemotionVideo: React.FC = () => {
     return (
         <Composition
-            id="WeatherScene"
-            component={WeatherScene}
+            id="WeatherComposition"
+            component={WeatherComposition}
             durationInFrames={FPS * DURATION_IN_SECONDS}
             fps={FPS}
             width={1920}

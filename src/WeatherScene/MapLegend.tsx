@@ -3,13 +3,14 @@ import styled from 'styled-components';
 
 interface Props {
     className?: string;
+    title: string;
 }
 
-export const MapLegend: FunctionComponent<Props> = ({ className }) => {
+export const MapLegend: FunctionComponent<Props> = ({ className, title }) => {
     return (
         <GradientContainer className={className}>
             <Container>
-                <Text>Prévisions du matin</Text>
+                <Text>{title}</Text>
             </Container>
         </GradientContainer>
     );

@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { AbsoluteFill, Img } from 'remotion';
 import styled, { ThemeProvider } from 'styled-components';
-import Background from '../assets/Background.jpg';
-import { theme } from '../assets/theme';
+import Background from '../../assets/Background.jpg';
+import { theme } from '../../assets/theme';
 import { WeatherMap } from './components/WeatherMap';
+import { DisplayType } from './interface';
 import { MapLegend } from './MapLegend';
 
-export const WeatherScene: React.FC = () => {
+const Titles = {
+    [DisplayType.FORECAST]: 'Prévisions pour la journée',
+    [DisplayType.MORNING_TEMPERATURE]: 'Température du matin',
+    [DisplayType.AFTERNOON_TEMPERATURE]: "Température de l'après midi",
+};
+
+interface Props {
+    displayType: DisplayType;
+}
+
+export const WeatherScene: FunctionComponent<Props> = ({ displayType }) => {
+    const title = Titles[displayType];
+
     return (
         <ThemeProvider theme={theme}>
             <AbsoluteFill>
                 <BackgroundImage src={Background} />
             </AbsoluteFill>
             <ContentContainer>
-                <StyledMapLegend />
+                <StyledMapLegend title={title} />
                 <StyledWeatherMap />
             </ContentContainer>
         </ThemeProvider>

@@ -46,3 +46,9 @@ export interface CityWeather {
     lon: number;
     weathers: Array<Weather>;
 }
+
+export enum DisplayType {
+    FORECAST = 'FORECAST',
+    MORNING_TEMPERATURE = 'MORNING_TEMPERATURE',
+    AFTERNOON_TEMPERATURE = 'AFTERNOON_TEMPERATURE',
+}
