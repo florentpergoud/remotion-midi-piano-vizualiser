@@ -1,13 +1,6 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
-
-const citiesCoordinates = [
-    {
-        name: 'Paris',
-        lat: 48.8534,
-        lon: 2.3488,
-    },
-];
+const citiesCoordinates = require('./citiesCoordinates.json');
 
 (async () => {
     try {
@@ -25,7 +18,7 @@ const citiesCoordinates = [
                     return { cityName: citiesCoordinates[index].name, data: await jsonData };
                 }),
             ).then((data) => {
-                fs.writeFileSync('./src/rawData.json', JSON.stringify(data), null, 4);
+                fs.writeFileSync('./src/api/rawData.json', JSON.stringify(data), null, 4);
             });
         });
     } catch (error) {

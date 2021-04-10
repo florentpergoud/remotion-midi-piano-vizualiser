@@ -26,6 +26,8 @@ export interface ApiData {
     cityName: string;
     data: {
         daily: Array<ApiDailyForecast>;
+        lat: number;
+        lon: number;
     };
 }
 
@@ -40,5 +42,7 @@ export interface Weather {
 
 export interface CityWeather {
     cityName: string;
+    lat: number;
+    lon: number;
     weathers: Array<Weather>;
 }

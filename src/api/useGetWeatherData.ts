@@ -1,4 +1,4 @@
-import { ApiData, CityWeather, Weather } from './interface';
+import { ApiData, CityWeather, Weather } from '../interface';
 import apiData from './rawData.json';
 
 const refineWeatherData = (rawData: ApiData): Array<Weather> => {
@@ -16,6 +16,8 @@ const refineData = (rawDatas: Array<ApiData>): Array<CityWeather> => {
     return rawDatas.map((rawData) => {
         const weatherDataForCity = refineWeatherData(rawData);
         return {
+            lat: rawData.data.lat,
+            lon: rawData.data.lon,
             cityName: rawData.cityName,
             weathers: weatherDataForCity,
         };

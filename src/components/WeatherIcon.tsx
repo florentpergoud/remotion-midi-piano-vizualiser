@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { Img } from 'remotion';
 
-const ICON_SIZE = 50;
+const ICON_SIZE = 90;
 
 interface Props {
     className?: string;
