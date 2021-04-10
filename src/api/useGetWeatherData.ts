@@ -1,4 +1,4 @@
-import { ApiData, CityWeather, Weather } from '../interface';
+import { ApiData, CityWeather, Weather } from '../WeatherScene/interface';
 import apiData from './rawData.json';
 
 const refineWeatherData = (rawData: ApiData): Array<Weather> => {

@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { useGetWeatherData } from '../api/useGetWeatherData';
+import { useGetWeatherData } from '../../api/useGetWeatherData';
+import { useTranslate } from './useTranslate';
 import { transformLatToMapTopPosition, transformLongToMapLeftPosition } from './utils';
 import { WeatherIcon } from './WeatherIcon';
 import { WeatherMapBackground } from './WeatherMapBackground';
@@ -14,8 +15,13 @@ interface Props {
 export const WeatherMap: FunctionComponent<Props> = ({ className }) => {
     const { weatherDataByCity } = useGetWeatherData();
 
+    const translateX = useTranslate({
+        from: -1000,
+        to: 0,
+    });
+
     return (
-        <Container className={className}>
+        <Container className={className} $translateX={translateX}>
             <CityContainer>
                 {weatherDataByCity.map((city, index) => {
                     const top = transformLatToMapTopPosition(city.lat);
@@ -30,12 +36,13 @@ export const WeatherMap: FunctionComponent<Props> = ({ className }) => {
     );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ $translateX: number }>`
     height: 100%;
     width: 100%;
     display: flex;
     padding-top: 10%;
     position: relative;
+    transform: translateX(${({ $translateX }) => `${$translateX}px`});
 `;
 
 const CityContainer = styled.div`

@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react';
 import styled from 'styled-components';
+import { useTranslate } from './useTranslate';
 
 interface Props {
     className?: string;
@@ -7,8 +8,13 @@ interface Props {
 }
 
 export const MapLegend: FunctionComponent<Props> = ({ className, title }) => {
+    const translateX = useTranslate({
+        from: -1000,
+        to: 0,
+    });
+
     return (
-        <GradientContainer className={className}>
+        <GradientContainer className={className} $translateX={translateX}>
             <Container>
                 <Text>{title}</Text>
             </Container>
@@ -16,10 +22,11 @@ export const MapLegend: FunctionComponent<Props> = ({ className, title }) => {
     );
 };
 
-const GradientContainer = styled.div`
+const GradientContainer = styled.div<{ $translateX: number }>`
     background: linear-gradient(90deg, rgba(202, 23, 96, 1) 0%, rgba(94, 89, 217, 1) 100%);
     padding: 10px 0px;
     padding-right: 10px;
+    transform: translateX(${({ $translateX }) => `${$translateX}px`});
 `;
 
 const Container = styled.div`
@@ -29,7 +36,7 @@ const Container = styled.div`
     width: fit-content;
 `;
 
-const Text = styled.text`
+const Text = styled.h1`
     font-family: 'VisbyCF-Heavy';
     font-size: 44px;
     text-transform: uppercase;

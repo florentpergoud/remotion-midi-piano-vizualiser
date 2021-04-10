@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import { AbsoluteFill, Img } from 'remotion';
+import { Sequence, useVideoConfig } from 'remotion';
 import styled, { ThemeProvider } from 'styled-components';
-import Background from '../../assets/Background.jpg';
 import { theme } from '../../assets/theme';
+import { MapLegend } from './components/MapLegend';
+import { useTranslate } from './components/useTranslate';
 import { WeatherMap } from './components/WeatherMap';
 import { DisplayType } from './interface';
-import { MapLegend } from './MapLegend';
 
 const Titles = {
     [DisplayType.FORECAST]: 'Prévisions pour la journée',
@@ -15,28 +15,42 @@ const Titles = {
 
 interface Props {
     displayType: DisplayType;
+    durationInFrames: number;
 }
 
-export const WeatherScene: FunctionComponent<Props> = ({ displayType }) => {
+const MAP_APPEARANCE_DELAY_IN_SECONDS = 1;
+const DISAPPEARANCE_DURATION_IN_SECONDS = 1;
+
+export const WeatherScene: FunctionComponent<Props> = ({ displayType, durationInFrames }) => {
     const title = Titles[displayType];
+
+    const { fps } = useVideoConfig();
+
+    const translateX = useTranslate({
+        from: 0,
+        to: -1000,
+        startAtFrame: durationInFrames - DISAPPEARANCE_DURATION_IN_SECONDS * fps,
+    });
 
     return (
         <ThemeProvider theme={theme}>
-            <AbsoluteFill>
-                <BackgroundImage src={Background} />
-            </AbsoluteFill>
-            <ContentContainer>
-                <StyledMapLegend title={title} />
-                <StyledWeatherMap />
+            <ContentContainer $translateX={translateX}>
+                <Sequence from={0} durationInFrames={Infinity} name={`${displayType}-Title`}>
+                    <StyledMapLegend title={title} />
+                </Sequence>
+                <Sequence from={MAP_APPEARANCE_DELAY_IN_SECONDS * fps} durationInFrames={Infinity} name="Map">
+                    <StyledWeatherMap />
+                </Sequence>
             </ContentContainer>
         </ThemeProvider>
     );
 };
 
-const ContentContainer = styled.div`
+const ContentContainer = styled.div<{ $translateX: number }>`
     position: relative;
     height: 100%;
     width: 50%;
+    transform: translateX(${({ $translateX }) => `${$translateX}px`});
 `;
 
 const StyledWeatherMap = styled(WeatherMap)`
@@ -47,9 +61,4 @@ const StyledWeatherMap = styled(WeatherMap)`
 const StyledMapLegend = styled(MapLegend)`
     position: absolute;
     margin-top: 20px;
-`;
-
-const BackgroundImage = styled(Img)`
-    height: 100%;
-    width: 100%;
 `;
