@@ -17,12 +17,12 @@ export const icon11n: FunctionComponent<Props> = ({ className, filled }) => {
             />
             <g>
                 <path fill="#f4a71d" d="M30 36l-4 12h4l-2 10 10-14h-6l4-8h-6z" />
-                <animate
+                {/* <animate
                     attributeName="opacity"
                     dur="2s"
                     repeatCount="indefinite"
                     values="1;1;1;1;1;1;0.1;1;0.1;1;1;0.1;1;0.1;1"
-                />
+                /> */}
             </g>
         </svg>
     ) : (

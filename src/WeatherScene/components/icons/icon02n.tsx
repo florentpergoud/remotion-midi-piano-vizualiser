@@ -26,13 +26,13 @@ export const icon02n: FunctionComponent<Props> = ({ className, filled }) => {
                         strokeWidth="3"
                         d="M29.33 27.13A10.6 10.6 0 0118.65 16.6 10.44 10.44 0 0119 14a10.54 10.54 0 1011.5 13.07 11.46 11.46 0 01-1.17.06z"
                     />
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         dur="10s"
                         repeatCount="indefinite"
                         type="rotate"
                         values="-10 19.22 24.293;10 19.22 24.293;-10 19.22 24.293"
-                    />
+                    /> */}
                 </g>
             </g>
             <path

@@ -23,14 +23,14 @@ export const icon09n: FunctionComponent<Props> = ({ className, filled }) => {
                         strokeWidth="2"
                         d="M24.52 49.05l-1.04 5.9"
                     />
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         dur="0.5s"
                         repeatCount="indefinite"
                         type="translate"
                         values="2 -10; -2 10"
                     />
-                    <animate attributeName="opacity" dur="0.5s" repeatCount="indefinite" values="1;1;0" />
+                    <animate attributeName="opacity" dur="0.5s" repeatCount="indefinite" values="1;1;0" /> */}
                 </g>
                 <g>
                     <path

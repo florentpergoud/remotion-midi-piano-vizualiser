@@ -7,7 +7,7 @@ interface Props {
 
 export const icon02d: FunctionComponent<Props> = ({ className, filled }) => {
     return filled ? (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" className={className}>
             <defs>
                 <clipPath id="a">
                     <path
@@ -27,14 +27,14 @@ export const icon02d: FunctionComponent<Props> = ({ className, filled }) => {
                         strokeWidth="2"
                         d="M19.22 15.97v-3.18M19.22 35.79v-3.17M25.11 18.4l2.24-2.24M11.09 32.42l2.24-2.24M13.33 18.4l-2.24-2.24M27.35 32.42l-2.24-2.24M10.89 24.29H7.72M30.72 24.29h-3.17"
                     />
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         dur="45s"
                         from="0 19.22 24.293"
                         repeatCount="indefinite"
                         to="360 19.22 24.293"
                         type="rotate"
-                    />
+                    /> */}
                 </g>
             </g>
             <path

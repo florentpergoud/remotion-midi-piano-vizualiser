@@ -30,14 +30,14 @@ export const icon10d: FunctionComponent<Props> = ({ className, filled }) => {
                         strokeWidth="2"
                         d="M19.22 15.97v-3.18M19.22 35.79v-3.17M25.11 18.4l2.24-2.24M11.09 32.42l2.24-2.24M13.33 18.4l-2.24-2.24M27.35 32.42l-2.24-2.24M10.89 24.29H7.72M30.72 24.29h-3.17"
                     />
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         dur="45s"
                         from="0 19.22 24.293"
                         repeatCount="indefinite"
                         to="360 19.22 24.293"
                         type="rotate"
-                    />
+                    /> */}
                 </g>
             </g>
             <path
@@ -57,14 +57,14 @@ export const icon10d: FunctionComponent<Props> = ({ className, filled }) => {
                         strokeWidth="2"
                         d="M24.52 49.05l-1.04 5.9"
                     />
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         dur="0.5s"
                         repeatCount="indefinite"
                         type="translate"
                         values="2 -10; -2 10"
-                    />
-                    <animate attributeName="opacity" dur="0.5s" repeatCount="indefinite" values="1;1;0" />
+                    /> */}
+                    {/* <animate attributeName="opacity" dur="0.5s" repeatCount="indefinite" values="1;1;0" /> */}
                 </g>
                 <g>
                     <path
@@ -75,15 +75,15 @@ export const icon10d: FunctionComponent<Props> = ({ className, filled }) => {
                         strokeWidth="2"
                         d="M31.52 49.05l-1.04 5.9"
                     />
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         begin="-0.3s"
                         dur="0.5s"
                         repeatCount="indefinite"
                         type="translate"
                         values="2 -10; -2 10"
-                    />
-                    <animate attributeName="opacity" begin="-0.3s" dur="0.5s" repeatCount="indefinite" values="1;1;0" />
+                    /> */}
+                    {/* <animate attributeName="opacity" begin="-0.3s" dur="0.5s" repeatCount="indefinite" values="1;1;0" /> */}
                 </g>
                 <g>
                     <path
@@ -94,15 +94,15 @@ export const icon10d: FunctionComponent<Props> = ({ className, filled }) => {
                         strokeWidth="2"
                         d="M38.52 49.05l-1.04 5.9"
                     />
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         begin="-0.1s"
                         dur="0.5s"
                         repeatCount="indefinite"
                         type="translate"
                         values="2 -10; -2 10"
-                    />
-                    <animate attributeName="opacity" begin="-0.1s" dur="0.5s" repeatCount="indefinite" values="1;1;0" />
+                    /> */}
+                    {/* <animate attributeName="opacity" begin="-0.1s" dur="0.5s" repeatCount="indefinite" values="1;1;0" /> */}
                 </g>
             </g>
         </svg>

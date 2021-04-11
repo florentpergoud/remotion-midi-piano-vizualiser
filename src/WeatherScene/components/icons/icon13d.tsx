@@ -30,14 +30,14 @@ export const icon13d: FunctionComponent<Props> = ({ className, filled }) => {
                         strokeWidth="2"
                         d="M19.22 15.97v-3.18M19.22 35.79v-3.17M25.11 18.4l2.24-2.24M11.09 32.42l2.24-2.24M13.33 18.4l-2.24-2.24M27.35 32.42l-2.24-2.24M10.89 24.29H7.72M30.72 24.29h-3.17"
                     />
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         dur="45s"
                         from="0 19.22 24.293"
                         repeatCount="indefinite"
                         to="360 19.22 24.293"
                         type="rotate"
-                    />
+                    /> */}
                 </g>
             </g>
             <path
@@ -55,30 +55,30 @@ export const icon13d: FunctionComponent<Props> = ({ className, filled }) => {
                                 fill="#72b8d4"
                                 d="M32.29 47.2l.29.82a.29.29 0 00.41.17l.79-.37a.3.3 0 01.4.4l-.37.79a.29.29 0 00.17.41l.82.29a.31.31 0 010 .58l-.82.29a.29.29 0 00-.17.41l.37.79a.3.3 0 01-.4.4l-.78-.37a.29.29 0 00-.41.17l-.29.82a.31.31 0 01-.58 0l-.3-.8a.29.29 0 00-.41-.17l-.79.37a.3.3 0 01-.4-.4l.37-.79a.29.29 0 00-.17-.41l-.82-.29a.31.31 0 010-.58l.82-.29a.29.29 0 00.17-.41l-.37-.79a.3.3 0 01.4-.4l.79.37a.29.29 0 00.41-.17l.29-.82a.31.31 0 01.58-.02z"
                             />
-                            <animateTransform
+                            {/* <animateTransform
                                 attributeName="transform"
                                 dur="9s"
                                 repeatCount="indefinite"
                                 type="rotate"
                                 values="0 32 50; 180 32 50; 360 32 50"
-                            />
+                            /> */}
                         </g>
-                        <animateTransform
+                        {/* <animateTransform
                             attributeName="transform"
                             dur="3s"
                             repeatCount="indefinite"
                             type="translate"
                             values="-3 0; 3 0"
-                        />
+                        /> */}
                     </g>
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         dur="3s"
                         repeatCount="indefinite"
                         type="translate"
                         values="2 -6; -2 12"
                     />
-                    <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="1;1;1;0" />
+                    <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="1;1;1;0" /> */}
                 </g>
                 <g>
                     <g>
@@ -87,24 +87,24 @@ export const icon13d: FunctionComponent<Props> = ({ className, filled }) => {
                                 fill="#72b8d4"
                                 d="M39.29 47.2l.29.82a.29.29 0 00.41.17l.79-.37a.3.3 0 01.4.4l-.37.79a.29.29 0 00.17.41l.82.29a.31.31 0 010 .58l-.82.29a.29.29 0 00-.17.41l.37.79a.3.3 0 01-.4.4l-.78-.37a.29.29 0 00-.41.17l-.29.82a.31.31 0 01-.58 0l-.3-.8a.29.29 0 00-.41-.17l-.79.37a.3.3 0 01-.4-.4l.37-.79a.29.29 0 00-.17-.41l-.82-.29a.31.31 0 010-.58l.82-.29a.29.29 0 00.17-.41l-.37-.79a.3.3 0 01.4-.4l.79.37a.29.29 0 00.41-.17l.29-.82a.31.31 0 01.58-.02z"
                             />
-                            <animateTransform
+                            {/* <animateTransform
                                 attributeName="transform"
                                 dur="6s"
                                 repeatCount="indefinite"
                                 type="rotate"
                                 values="0 39 50; 180 39 50; 360 39 50"
-                            />
+                            /> */}
                         </g>
-                        <animateTransform
+                        {/* <animateTransform
                             attributeName="transform"
                             begin="-1s"
                             dur="3s"
                             repeatCount="indefinite"
                             type="translate"
                             values="0 0; 3 0"
-                        />
+                        /> */}
                     </g>
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         begin="-1s"
                         dur="3s"
@@ -112,7 +112,7 @@ export const icon13d: FunctionComponent<Props> = ({ className, filled }) => {
                         type="translate"
                         values="2 -6; -2 12"
                     />
-                    <animate attributeName="opacity" begin="-1s" dur="3s" repeatCount="indefinite" values="1;1;1;0" />
+                    <animate attributeName="opacity" begin="-1s" dur="3s" repeatCount="indefinite" values="1;1;1;0" /> */}
                 </g>
                 <g>
                     <g>
@@ -121,24 +121,24 @@ export const icon13d: FunctionComponent<Props> = ({ className, filled }) => {
                                 fill="#72b8d4"
                                 d="M25.29 47.2l.29.82a.29.29 0 00.41.17l.79-.37a.3.3 0 01.4.4l-.37.79a.29.29 0 00.17.41l.82.29a.31.31 0 010 .58l-.82.29a.29.29 0 00-.17.41l.37.79a.3.3 0 01-.4.4l-.78-.37a.29.29 0 00-.41.17l-.29.82a.31.31 0 01-.58 0l-.3-.8a.29.29 0 00-.41-.17l-.79.37a.3.3 0 01-.4-.4l.37-.79a.29.29 0 00-.17-.41l-.82-.29a.31.31 0 010-.58l.82-.29a.29.29 0 00.17-.41l-.37-.79a.3.3 0 01.4-.4l.79.37a.29.29 0 00.41-.17l.29-.82a.31.31 0 01.58-.02z"
                             />
-                            <animateTransform
+                            {/* <animateTransform
                                 attributeName="transform"
                                 dur="6s"
                                 repeatCount="indefinite"
                                 type="rotate"
                                 values="0 25 50; 180 25 50; 360 25 50"
-                            />
+                            /> */}
                         </g>
-                        <animateTransform
+                        {/* <animateTransform
                             attributeName="transform"
                             begin="-1.5s"
                             dur="3s"
                             repeatCount="indefinite"
                             type="translate"
                             values="-3 0; 2 0"
-                        />
+                        /> */}
                     </g>
-                    <animateTransform
+                    {/* <animateTransform
                         attributeName="transform"
                         begin="-1.5s"
                         dur="3s"
@@ -146,7 +146,7 @@ export const icon13d: FunctionComponent<Props> = ({ className, filled }) => {
                         type="translate"
                         values="2 -6; -2 12"
                     />
-                    <animate attributeName="opacity" begin="-1.5s" dur="3s" repeatCount="indefinite" values="1;1;1;0" />
+                    <animate attributeName="opacity" begin="-1.5s" dur="3s" repeatCount="indefinite" values="1;1;1;0" /> */}
                 </g>
             </g>
         </svg>

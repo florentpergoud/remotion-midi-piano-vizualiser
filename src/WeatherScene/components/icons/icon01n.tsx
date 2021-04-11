@@ -17,13 +17,13 @@ export const icon01d: FunctionComponent<Props> = ({ className, filled }) => {
                     strokeWidth="3"
                     d="M46.66 36.2a16.66 16.66 0 01-16.78-16.55 16.29 16.29 0 01.55-4.15A16.56 16.56 0 1048.5 36.1c-.61.06-1.22.1-1.84.1z"
                 />
-                <animateTransform
+                {/* <animateTransform
                     attributeName="transform"
                     dur="10s"
                     repeatCount="indefinite"
                     type="rotate"
                     values="-5 32 32;15 32 32;-5 32 32"
-                />
+                /> */}
             </g>
         </svg>
     ) : (

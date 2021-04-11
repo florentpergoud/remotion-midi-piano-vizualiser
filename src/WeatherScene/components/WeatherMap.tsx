@@ -16,14 +16,14 @@ interface Props {
 }
 
 export const WeatherMap: FunctionComponent<Props> = ({ className, displayType }) => {
-    const data = useGetWeatherData();
     const {
         minimalEveningTemperature,
         maximalEveningTemperature,
         minimalMorningTemperature,
         maximalMorningTemperature,
         weatherDataByCity,
-    } = data;
+    } = useGetWeatherData();
+
     const translateX = useTranslate({
         from: -1000,
         to: 0,
@@ -41,14 +41,14 @@ export const WeatherMap: FunctionComponent<Props> = ({ className, displayType })
                                 key={index}
                                 $top={top}
                                 $left={left}
-                                icon={city.weathers[0].weatherIcon}
+                                icon={city.weathers[1].weatherIcon}
                             />
                         );
                     }
                     const temperature =
                         displayType === DisplayType.MORNING_TEMPERATURE
-                            ? city.weathers[0].temperature.morning
-                            : city.weathers[0].temperature.evening;
+                            ? city.weathers[1].temperature.morning
+                            : city.weathers[1].temperature.evening;
                     const minTemperature =
                         displayType === DisplayType.MORNING_TEMPERATURE
                             ? minimalMorningTemperature

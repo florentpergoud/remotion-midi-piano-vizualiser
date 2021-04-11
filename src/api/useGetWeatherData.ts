@@ -34,8 +34,8 @@ export const useGetWeatherData = (): {
     weatherDataByCity: Array<CityWeather>;
 } => {
     const weatherDataByCity = refineData(apiData);
-    const eveningTemperaturesArray = weatherDataByCity.map((city) => city.weathers[0].temperature.evening);
-    const morningTemperaturesArray = weatherDataByCity.map((city) => city.weathers[0].temperature.morning);
+    const eveningTemperaturesArray = weatherDataByCity.map((city) => city.weathers[1].temperature.evening);
+    const morningTemperaturesArray = weatherDataByCity.map((city) => city.weathers[1].temperature.morning);
 
     const minimalEveningTemperature = Math.min(...eveningTemperaturesArray);
     const maximalEveningTemperature = Math.max(...eveningTemperaturesArray);
