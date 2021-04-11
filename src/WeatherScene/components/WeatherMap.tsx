@@ -6,7 +6,7 @@ import { transformLatToMapTopPosition, transformLongToMapLeftPosition } from './
 import { WeatherIcon } from './WeatherIcon';
 import { WeatherMapBackground } from './WeatherMapBackground';
 
-const ICON_SIZE = 74;
+const ICON_SIZE = 85;
 
 interface Props {
     className?: string;
