@@ -39,7 +39,7 @@ export const WeatherScene: FunctionComponent<Props> = ({ displayType, durationIn
                     <StyledMapLegend title={title} />
                 </Sequence>
                 <Sequence from={MAP_APPEARANCE_DELAY_IN_SECONDS * fps} durationInFrames={Infinity} name="Map">
-                    <StyledWeatherMap />
+                    <StyledWeatherMap displayType={displayType} />
                 </Sequence>
             </ContentContainer>
         </ThemeProvider>

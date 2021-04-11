@@ -41,6 +41,5 @@ const Text = styled.h1`
     font-size: 44px;
     text-transform: uppercase;
     color: white;
-    padding: 0;
     margin: 0;
 `;
