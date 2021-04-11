@@ -33,7 +33,7 @@ export interface ApiData {
 
 export interface Weather {
     date: Date;
-    temerature: {
+    temperature: {
         morning: number;
         evening: number;
     };

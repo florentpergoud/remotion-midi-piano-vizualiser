@@ -3,30 +3,16 @@ import apiData from './rawData.json';
 
 const refineWeatherData = (rawData: ApiData): Array<Weather> => {
     return rawData.data.daily.map((daily) => ({
-        temerature: {
-            morning: Math.trunc(daily.temp.morn),
-            evening: Math.trunc(daily.temp.eve),
+        temperature: {
+            morning: Math.round(daily.temp.morn),
+            evening: Math.round(daily.temp.eve),
         },
         weatherIcon: daily.weather[0].icon,
         date: new Date(daily.dt * 1000),
     }));
 };
 
-const refineData = (
-    rawDatas: Array<ApiData>,
-): {
-    minimalEveningTemperature: number;
-    maximalEveningTemperature: number;
-    minimalMorningTemperature: number;
-    maximalMorningTemperature: number;
-    weatherDataByCity: Array<CityWeather>;
-} => {
-    const eveningTemperaturesArray = rawDatas.map((rawData) => Math.trunc(rawData.data.daily[0].temp.eve));
-    const morningTemperaturesArray = rawDatas.map((rawData) => Math.trunc(rawData.data.daily[0].temp.morn));
-    const minimalEveningTemperature = Math.min(...eveningTemperaturesArray);
-    const maximalEveningTemperature = Math.max(...eveningTemperaturesArray);
-    const minimalMorningTemperature = Math.min(...morningTemperaturesArray);
-    const maximalMorningTemperature = Math.max(...morningTemperaturesArray);
+const refineData = (rawDatas: Array<ApiData>): Array<CityWeather> => {
     const weatherDataByCity = rawDatas.map((rawData) => {
         const weatherDataForCity = refineWeatherData(rawData);
         return {
@@ -37,13 +23,7 @@ const refineData = (
         };
     });
 
-    return {
-        weatherDataByCity,
-        minimalEveningTemperature,
-        maximalEveningTemperature,
-        minimalMorningTemperature,
-        maximalMorningTemperature,
-    };
+    return weatherDataByCity;
 };
 
 export const useGetWeatherData = (): {
@@ -53,7 +33,19 @@ export const useGetWeatherData = (): {
     maximalMorningTemperature: number;
     weatherDataByCity: Array<CityWeather>;
 } => {
+    const weatherDataByCity = refineData(apiData);
+    const eveningTemperaturesArray = weatherDataByCity.map((city) => city.weathers[0].temperature.evening);
+    const morningTemperaturesArray = weatherDataByCity.map((city) => city.weathers[0].temperature.morning);
+
+    const minimalEveningTemperature = Math.min(...eveningTemperaturesArray);
+    const maximalEveningTemperature = Math.max(...eveningTemperaturesArray);
+    const minimalMorningTemperature = Math.min(...morningTemperaturesArray);
+    const maximalMorningTemperature = Math.max(...morningTemperaturesArray);
     return {
-        ...refineData(apiData),
+        weatherDataByCity,
+        minimalEveningTemperature,
+        maximalEveningTemperature,
+        minimalMorningTemperature,
+        maximalMorningTemperature,
     };
 };

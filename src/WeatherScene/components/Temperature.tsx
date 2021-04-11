@@ -15,13 +15,9 @@ export const Temperature: FunctionComponent<Props> = ({
     maximalTemperature,
 }) => {
     return (
-        <TemperatureContainer
-            className={className}
-            $isMinimal={temperature === minimalTemperature}
-            $isMaximal={temperature === maximalTemperature}
-        >
+        <TemperatureContainer className={className}>
             <TemperatureText
-                $isMinimal={temperature === minimalTemperature}
+                $isMinimal={Math.trunc(temperature) === Math.trunc(minimalTemperature)}
                 $isMaximal={temperature === maximalTemperature}
             >
                 {temperature}
@@ -30,7 +26,7 @@ export const Temperature: FunctionComponent<Props> = ({
     );
 };
 
-const TemperatureContainer = styled.div<{ $isMinimal: boolean; $isMaximal: boolean }>`
+const TemperatureContainer = styled.div`
     height: 54px;
     width: 54px;
     border-radius: 27px;
