@@ -23,7 +23,7 @@ export const MapLegend: FunctionComponent<Props> = ({ className, title }) => {
 };
 
 const GradientContainer = styled.div<{ $translateX: number }>`
-    background: linear-gradient(90deg, rgba(202, 23, 96, 1) 0%, rgba(94, 89, 217, 1) 100%);
+    background: ${({ theme: { colors } }) => `linear-gradient(90deg, ${colors.red} 0%, ${colors.primaryLighter} 100%)`};
     padding: 10px 0px;
     padding-right: 10px;
     transform: translateX(${({ $translateX }) => `${$translateX}px`});

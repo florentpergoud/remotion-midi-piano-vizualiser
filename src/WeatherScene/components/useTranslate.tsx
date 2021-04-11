@@ -12,10 +12,6 @@ export const useTranslate = ({
     const { fps } = useVideoConfig();
     const frame = useCurrentFrame();
 
-    if (startAtFrame) {
-        console.log('frame - startAtFrame', JSON.stringify(frame - startAtFrame, null, 2));
-    }
-
     const animation = spring({
         frame: frame - startAtFrame,
         fps,

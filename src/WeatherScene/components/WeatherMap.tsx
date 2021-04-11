@@ -1,7 +1,8 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { useGetWeatherData } from '../../api/useGetWeatherData';
 import { DisplayType } from '../interface';
+import { Temperature } from './Temperature';
 import { useTranslate } from './useTranslate';
 import { transformLatToMapTopPosition, transformLongToMapLeftPosition } from './utils';
 import { WeatherIcon } from './WeatherIcon';
@@ -15,7 +16,13 @@ interface Props {
 }
 
 export const WeatherMap: FunctionComponent<Props> = ({ className, displayType }) => {
-    const { weatherDataByCity } = useGetWeatherData();
+    const {
+        minimalEveningTemperature,
+        maximalEveningTemperature,
+        minimalMorningTemperature,
+        maximalMorningTemperature,
+        weatherDataByCity,
+    } = useGetWeatherData();
 
     const translateX = useTranslate({
         from: -1000,
@@ -38,16 +45,25 @@ export const WeatherMap: FunctionComponent<Props> = ({ className, displayType })
                             />
                         );
                     }
-                    const rawTemperature =
+                    const temperature =
                         displayType === DisplayType.MORNING_TEMPERATURE
                             ? city.weathers[0].temerature.morning
                             : city.weathers[0].temerature.evening;
-                    const temperature = rawTemperature.toFixed(0);
-
+                    const minTemperature = DisplayType.MORNING_TEMPERATURE
+                        ? minimalMorningTemperature
+                        : minimalEveningTemperature;
+                    const maxTemperature = DisplayType.MORNING_TEMPERATURE
+                        ? maximalMorningTemperature
+                        : maximalEveningTemperature;
                     return (
-                        <TemperatureContainer key={index} $top={top} $left={left}>
-                            <TemperatureText>{temperature}</TemperatureText>
-                        </TemperatureContainer>
+                        <StyledTemperature
+                            key={index}
+                            $top={top}
+                            $left={left}
+                            temperature={temperature}
+                            minimalTemperature={minTemperature}
+                            maximalTemperature={maxTemperature}
+                        />
                     );
                 })}
             </CitiesContainer>
@@ -82,28 +98,9 @@ const StyledWeatherIcon = styled(WeatherIcon)<{ $top: number; $left: number }>`
     width: ${ICON_SIZE}px;
 `;
 
-const TemperatureContainer = styled.div<{ $top: number; $left: number }>`
+const StyledTemperature = styled(Temperature)<{ $top: number; $left: number }>`
     position: absolute;
     z-index: 2;
     top: ${({ $top }) => $top}%;
     left: ${({ $left }) => $left + 1}%;
-    height: 54px;
-    width: 54px;
-    border-radius: 27px;
-    background-color: ${({ theme }) => theme.colors.primaryDarker};
-    /* background-color: ${({ theme }) => theme.colors.white}; */
-    /* background-color: rgba(255, 255, 255, 0.6); */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 4px;
-`;
-
-const TemperatureText = styled.h2`
-    font-family: 'VisbyCF-Heavy';
-    font-size: 28px;
-    text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.white};
-    /* color: ${({ theme }) => theme.colors.primaryDarker}; */
-    margin: 0;
 `;
