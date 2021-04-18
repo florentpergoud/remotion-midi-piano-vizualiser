@@ -3,6 +3,7 @@ import { FunctionComponent } from 'react';
 const pathStyle = {
     stroke: 'white',
     strokeWidth: '2px',
+    filter: 'drop-shadow(  7px 7px 7px black)',
 };
 
 export const WeatherMapBackground: FunctionComponent = () => {

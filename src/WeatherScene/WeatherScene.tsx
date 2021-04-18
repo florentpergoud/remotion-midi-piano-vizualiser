@@ -8,7 +8,7 @@ import { WeatherMap } from './components/WeatherMap';
 import { DisplayType } from './interface';
 
 const Titles = {
-    [DisplayType.FORECAST]: 'Prévisions pour demain',
+    [DisplayType.FORECAST]: 'Prévisions',
     [DisplayType.MORNING_TEMPERATURE]: 'Température du matin',
     [DisplayType.AFTERNOON_TEMPERATURE]: "Température de l'après midi",
 };
@@ -36,7 +36,7 @@ export const WeatherScene: FunctionComponent<Props> = ({ displayType, durationIn
         <ThemeProvider theme={theme}>
             <ContentContainer $translateX={translateX}>
                 <Sequence from={0} durationInFrames={Infinity} name={`${displayType}-Title`}>
-                    <StyledMapLegend title={title} />
+                    <StyledMapLegend subtitle={title} />
                 </Sequence>
                 <Sequence from={MAP_APPEARANCE_DELAY_IN_SECONDS * fps} durationInFrames={Infinity} name="Map">
                     <StyledWeatherMap displayType={displayType} />
