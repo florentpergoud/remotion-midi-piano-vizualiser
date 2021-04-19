@@ -1,11 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { Sequence, useVideoConfig } from 'remotion';
-import styled, { ThemeProvider } from 'styled-components';
-import { theme } from '../../assets/theme';
-import { MapLegend } from './components/MapLegend';
-import { useTranslate } from './components/useTranslate';
-import { WeatherMap } from './components/WeatherMap';
+import styled from 'styled-components';
+import { WeatherIcons } from './components/WeatherIcons';
 import { DisplayType } from './interface';
+import { Subtitle } from './Subtitle';
 
 const Titles = {
     [DisplayType.FORECAST]: 'Prévisions',
@@ -18,47 +16,39 @@ interface Props {
     durationInFrames: number;
 }
 
-const MAP_APPEARANCE_DELAY_IN_SECONDS = 1;
-const DISAPPEARANCE_DURATION_IN_SECONDS = 1;
+const WEATHER_APPEARANCE_DELAY_IN_SECONDS = 1;
 
 export const WeatherScene: FunctionComponent<Props> = ({ displayType, durationInFrames }) => {
-    const title = Titles[displayType];
+    const subtitle = Titles[displayType];
 
     const { fps } = useVideoConfig();
-
-    const translateX = useTranslate({
-        from: 0,
-        to: -1000,
-        startAtFrame: durationInFrames - DISAPPEARANCE_DURATION_IN_SECONDS * fps,
-    });
-
+    const weatherAppearanceInFrame = WEATHER_APPEARANCE_DELAY_IN_SECONDS * fps;
     return (
-        <ThemeProvider theme={theme}>
-            <ContentContainer $translateX={translateX}>
-                <Sequence from={0} durationInFrames={Infinity} name={`${displayType}-Title`}>
-                    <StyledMapLegend subtitle={title} />
-                </Sequence>
-                <Sequence from={MAP_APPEARANCE_DELAY_IN_SECONDS * fps} durationInFrames={Infinity} name="Map">
-                    <StyledWeatherMap displayType={displayType} />
-                </Sequence>
-            </ContentContainer>
-        </ThemeProvider>
+        <ContentContainer>
+            <Sequence from={0} durationInFrames={durationInFrames} name={`${displayType}-Title`}>
+                <Subtitle subtitle={subtitle} />
+            </Sequence>
+            <Sequence
+                from={WEATHER_APPEARANCE_DELAY_IN_SECONDS * fps}
+                durationInFrames={durationInFrames - weatherAppearanceInFrame}
+                name="Map"
+            >
+                <StyledWeatherIcons
+                    displayType={displayType}
+                    durationInFrames={durationInFrames - weatherAppearanceInFrame}
+                />
+            </Sequence>
+        </ContentContainer>
     );
 };
 
-const ContentContainer = styled.div<{ $translateX: number }>`
+const ContentContainer = styled.div`
     position: relative;
     height: 100%;
     width: 50%;
-    transform: translateX(${({ $translateX }) => `${$translateX}px`});
 `;
 
-const StyledWeatherMap = styled(WeatherMap)`
+const StyledWeatherIcons = styled(WeatherIcons)`
     position: absolute;
     margin-top: 60px;
-`;
-
-const StyledMapLegend = styled(MapLegend)`
-    position: absolute;
-    margin-top: 20px;
 `;

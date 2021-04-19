@@ -2,47 +2,41 @@ import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { useTranslate } from './useTranslate';
 
-const title = 'Météo de demain';
+const TITLE = 'Météo de demain';
 
 interface Props {
     className?: string;
-    subtitle: string;
 }
 
-export const MapLegend: FunctionComponent<Props> = ({ className, subtitle }) => {
+export const Title: FunctionComponent<Props> = ({ className }) => {
     const translateX = useTranslate({
         from: -1000,
         to: 0,
     });
 
     return (
-        <Container className={className}>
-            <GradientContainer $translateX={translateX}>
-                <TitleContainer>
-                    <Text>{title}</Text>
-                </TitleContainer>
-            </GradientContainer>
-            <Subtitle>{subtitle}</Subtitle>
-        </Container>
+        <GradientContainer $translateX={translateX} className={className}>
+            <TitleContainer>
+                <Text>{TITLE}</Text>
+            </TitleContainer>
+        </GradientContainer>
     );
 };
-
-const Container = styled.div``;
 
 const GradientContainer = styled.div<{ $translateX: number }>`
     background: ${({ theme: { colors } }) => `linear-gradient(90deg, ${colors.red} 0%, ${colors.primaryLighter} 100%)`};
     padding: 10px;
     padding-left: 0px;
     transform: translateX(${({ $translateX }) => `${$translateX}px`});
-    width: fit-content;
     box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.8);
+    height: 100px;
 `;
 
 const TitleContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.primaryDarker};
     padding: 14px 40px;
     padding-bottom: 20px;
-    width: fit-content;
+    white-space: nowrap;
 `;
 
 const Text = styled.h1`
@@ -51,10 +45,4 @@ const Text = styled.h1`
     text-transform: uppercase;
     color: white;
     margin: 0;
-`;
-const Subtitle = styled(Text)`
-    font-size: 34px;
-    padding-left: 40px;
-    padding-top: 4px;
-    text-shadow: 7px 7px 7px rgba(0, 0, 0, 0.9);
 `;
