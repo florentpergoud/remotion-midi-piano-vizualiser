@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
+import { useVideoConfig } from 'remotion';
 import styled from 'styled-components';
 import { useGetWeatherData } from '../../api/useGetWeatherData';
+import { TRANSITION_DURATION_IN_SECONDS } from '../../constants';
 import { CityWeather, DisplayType } from '../interface';
 import { Temperature } from './Temperature';
 import { useFadeInAndOutOpacity } from './useFadeInAndOutOpacity';
-import { useTranslate } from './useTranslate';
+import { useTranslateInAndOut } from './useTranslateInAndOut';
 import { transformLatToMapTopPosition, transformLongToMapLeftPosition } from './utils';
 import { WeatherIcon } from './WeatherIcon';
 
@@ -17,26 +18,14 @@ interface Props {
     durationInFrames: number;
 }
 
-const TRANSITION_DURATION_IN_SECONDS = 0.5;
-
 export const WeatherIcons: FunctionComponent<Props> = ({ className, displayType, durationInFrames }) => {
     const { fps } = useVideoConfig();
-    const frame = useCurrentFrame();
 
     const transitionInFrames = TRANSITION_DURATION_IN_SECONDS * fps;
 
-    const inTranslateX = useTranslate({
-        from: -100,
-        to: 0,
-    });
+    const translateX = useTranslateInAndOut({ from: -100, to: 0, durationInFrames, transitionInFrames });
 
-    const outTranslateX = interpolate(
-        frame,
-        [0, durationInFrames - transitionInFrames, durationInFrames],
-        [0, 0, -100],
-    );
-
-    const { opacity } = useFadeInAndOutOpacity(transitionInFrames, durationInFrames);
+    const opacity = useFadeInAndOutOpacity(transitionInFrames, durationInFrames);
 
     const {
         minimalEveningTemperature,
@@ -73,7 +62,7 @@ export const WeatherIcons: FunctionComponent<Props> = ({ className, displayType,
     };
 
     return (
-        <Container className={className} $translateX={inTranslateX + outTranslateX} $opacity={opacity}>
+        <Container className={className} $translateX={translateX} $opacity={opacity}>
             <CitiesContainer $displayType={displayType}>{weatherDataByCity.map(renderIcon)}</CitiesContainer>
         </Container>
     );

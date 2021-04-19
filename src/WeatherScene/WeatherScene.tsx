@@ -26,7 +26,7 @@ export const WeatherScene: FunctionComponent<Props> = ({ displayType, durationIn
     return (
         <ContentContainer>
             <Sequence from={0} durationInFrames={durationInFrames} name={`${displayType}-Title`}>
-                <Subtitle subtitle={subtitle} />
+                <Subtitle subtitle={subtitle} durationInFrames={durationInFrames} />
             </Sequence>
             <Sequence
                 from={WEATHER_APPEARANCE_DELAY_IN_SECONDS * fps}

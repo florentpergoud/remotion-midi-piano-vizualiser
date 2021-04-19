@@ -1,16 +1,11 @@
 import { interpolate, useCurrentFrame } from 'remotion';
 
-export const useFadeInAndOutOpacity = (
-    transitionDurationInFrames: number,
-    durationInFrames: number,
-): { opacity: number } => {
+export const useFadeInAndOutOpacity = (transitionDurationInFrames: number, durationInFrames: number): number => {
     const frame = useCurrentFrame();
 
-    const opacity = interpolate(
+    return interpolate(
         frame,
         [0, transitionDurationInFrames, durationInFrames - transitionDurationInFrames, durationInFrames],
         [0, 1, 1, 0],
     );
-
-    return { opacity };
 };
