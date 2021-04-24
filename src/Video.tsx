@@ -1,18 +1,20 @@
 import { Composition } from 'remotion';
 import { PianoComposition } from './PianoComposition';
 
-const TOTAL_DURATION = 10;
-const FPS = 30;
+const TOTAL_DURATION_IN_SECONDS = 10;
+const FPS = 60;
+const HEIGHT = 1080;
+const WIDTH = 1920;
 
 export const RemotionVideo: React.FC = () => {
     return (
         <Composition
             id="PianoScene"
             component={PianoComposition}
-            durationInFrames={FPS * TOTAL_DURATION}
+            durationInFrames={FPS * TOTAL_DURATION_IN_SECONDS}
             fps={FPS}
-            width={1920}
-            height={1080}
+            width={WIDTH}
+            height={HEIGHT}
         />
     );
 };
