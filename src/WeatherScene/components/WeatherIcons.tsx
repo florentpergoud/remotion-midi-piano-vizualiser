@@ -23,7 +23,7 @@ export const WeatherIcons: FunctionComponent<Props> = ({ className, displayType,
 
     const transitionInFrames = TRANSITION_DURATION_IN_SECONDS * fps;
 
-    const translateX = useTranslateInAndOut({ from: -100, to: 0, durationInFrames, transitionInFrames });
+    const translateX = useTranslateInAndOut({ from: -10, to: 0, durationInFrames, transitionInFrames });
 
     const opacity = useFadeInAndOutOpacity(transitionInFrames, durationInFrames);
 

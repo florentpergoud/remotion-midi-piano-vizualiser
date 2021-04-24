@@ -1,6 +1,8 @@
 import { FunctionComponent } from 'react';
+import { useVideoConfig } from 'remotion';
 import styled from 'styled-components';
-import { useTranslate } from './useTranslate';
+import { TRANSITION_DURATION_IN_SECONDS } from '../../constants';
+import { useTranslateInAndOut } from './useTranslateInAndOut';
 
 const pathStyle = {
     stroke: 'white',
@@ -10,11 +12,18 @@ const pathStyle = {
 
 interface Props {
     className?: string;
+    durationInFrames: number;
 }
-export const WeatherMapBackground: FunctionComponent<Props> = ({ className }) => {
-    const translateX = useTranslate({
+export const WeatherMapBackground: FunctionComponent<Props> = ({ className, durationInFrames }) => {
+    const { fps } = useVideoConfig();
+
+    const transitionInFrames = fps * TRANSITION_DURATION_IN_SECONDS;
+
+    const translateX = useTranslateInAndOut({
         from: -1000,
         to: 0,
+        durationInFrames,
+        transitionInFrames,
     });
     return (
         <Container $translateX={translateX} className={className}>

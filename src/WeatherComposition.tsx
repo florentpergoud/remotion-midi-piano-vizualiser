@@ -6,9 +6,11 @@ import { theme } from '../assets/theme';
 import {
     AFTERNOON_TEMPERATURE_DURATION_IN_SECONDS,
     DELAY_BEFORE_BEGINNING_IN_SECONDS,
+    DELAY_BEFORE_FORECAST_IN_SECONDS,
     DELAY_BEFORE_MAP_APPEARS,
     FORECAST_DURATION_IN_SECONDS,
     MORNING_TEMPERATURE_DURATION_IN_SECONDS,
+    TOTAL_DURATION,
 } from './constants';
 import { Title } from './WeatherScene/components/Title';
 import { WeatherMapBackground } from './WeatherScene/components/WeatherMapBackground';
@@ -23,21 +25,25 @@ export const WeatherComposition: FunctionComponent = () => {
 
     const delayBeforeCompositionStart = DELAY_BEFORE_BEGINNING_IN_SECONDS * fps;
     const delayBeforeMapAppears = delayBeforeCompositionStart + DELAY_BEFORE_MAP_APPEARS * fps;
-    const delayBeforeForecast = delayBeforeMapAppears + 1 * fps;
+    const delayBeforeForecast = delayBeforeMapAppears + DELAY_BEFORE_FORECAST_IN_SECONDS * fps;
     const delayBeforeMorningTemperatureStart = delayBeforeForecast + weatherSceneDurationInFrames;
     const delayBeforeAfternoonTemperatureStart =
         delayBeforeMorningTemperatureStart + morningTemperatureSceneDurationInFrames;
+
+    const contentDurationInFrames = TOTAL_DURATION * fps;
+    const mapDuration = contentDurationInFrames - delayBeforeMapAppears;
+    const titleDuration = contentDurationInFrames - delayBeforeCompositionStart;
 
     return (
         <ThemeProvider theme={theme}>
             <AbsoluteFill>
                 <BackgroundImage src={Background} />
             </AbsoluteFill>
-            <Sequence from={delayBeforeCompositionStart} durationInFrames={Infinity} name="ForecastTitle">
-                <StyledTitle />
+            <Sequence from={delayBeforeCompositionStart} durationInFrames={titleDuration} name="ForecastTitle">
+                <StyledTitle durationInFrames={titleDuration} />
             </Sequence>
-            <Sequence from={delayBeforeMapAppears} durationInFrames={Infinity} name="ForecastMap">
-                <StyledWeatherMapBackground />
+            <Sequence from={delayBeforeMapAppears} durationInFrames={mapDuration} name="ForecastMap">
+                <StyledWeatherMapBackground durationInFrames={mapDuration} />
             </Sequence>
             <Sequence from={delayBeforeForecast} durationInFrames={weatherSceneDurationInFrames} name="Forecast">
                 <WeatherScene displayType={DisplayType.FORECAST} durationInFrames={weatherSceneDurationInFrames} />
