@@ -1,15 +1,14 @@
 import { Composition } from 'remotion';
-import '../assets/font.css';
-import { TOTAL_DURATION } from './constants';
-import { WeatherComposition } from './WeatherComposition';
+import { PianoComposition } from './PianoComposition';
 
+const TOTAL_DURATION = 10;
 const FPS = 30;
 
 export const RemotionVideo: React.FC = () => {
     return (
         <Composition
-            id="WeatherComposition"
-            component={WeatherComposition}
+            id="PianoScene"
+            component={PianoComposition}
             durationInFrames={FPS * TOTAL_DURATION}
             fps={FPS}
             width={1920}
