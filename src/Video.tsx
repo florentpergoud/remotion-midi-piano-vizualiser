@@ -1,8 +1,10 @@
 import { Composition } from 'remotion';
+import midiData from './api/midi.json';
+import { FPS } from './constant';
 import { PianoComposition } from './PianoComposition';
 
-const TOTAL_DURATION_IN_SECONDS = 10;
-const FPS = 60;
+const SONG_DURATION = midiData.length;
+
 const HEIGHT = 1080;
 const WIDTH = 1920;
 
@@ -11,7 +13,7 @@ export const RemotionVideo: React.FC = () => {
         <Composition
             id="PianoScene"
             component={PianoComposition}
-            durationInFrames={FPS * TOTAL_DURATION_IN_SECONDS}
+            durationInFrames={SONG_DURATION}
             fps={FPS}
             width={WIDTH}
             height={HEIGHT}

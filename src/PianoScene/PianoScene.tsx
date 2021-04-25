@@ -10,15 +10,13 @@ const LAST_NOTE = 108;
 
 export const PianoScene: FunctionComponent = () => {
     const { width } = useVideoConfig();
-    const { midi } = useGetActivesNotes();
-
-    console.log('midi', JSON.stringify(midi, null, 2));
+    const { activeNotesMidiNumber } = useGetActivesNotes();
 
     return (
         <PianoContainer>
             <Piano
                 noteRange={{ first: FIRST_NOTE, last: LAST_NOTE }}
-                activeNotes={[]}
+                activeNotes={activeNotesMidiNumber}
                 playNote={(midiNumber: number) => {
                     console.log(midiNumber);
                 }}
