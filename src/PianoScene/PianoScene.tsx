@@ -3,10 +3,8 @@ import { Piano } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import { useVideoConfig } from 'remotion';
 import styled from 'styled-components';
+import { FIRST_NOTE, LAST_NOTE } from '../constant';
 import { useGetActivesNotes } from './useGetActivesNotes';
-
-const FIRST_NOTE = 21;
-const LAST_NOTE = 108;
 
 export const PianoScene: FunctionComponent = () => {
     const { width } = useVideoConfig();

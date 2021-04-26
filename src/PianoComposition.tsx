@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { AbsoluteFill, Sequence } from 'remotion';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../assets/theme';
+import { NotesScene } from './NotesScene/NotesScene';
 import { PianoScene } from './PianoScene/PianoScene';
 
 export const PianoComposition: FunctionComponent = () => {
@@ -10,6 +11,9 @@ export const PianoComposition: FunctionComponent = () => {
             <AbsoluteFill>
                 <Background />
             </AbsoluteFill>
+            <Sequence from={0} durationInFrames={Infinity} name="Notes">
+                <NotesScene />
+            </Sequence>
             <Sequence from={0} durationInFrames={Infinity} name="Piano">
                 <PianoScene />
             </Sequence>
