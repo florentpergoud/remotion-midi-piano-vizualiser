@@ -8,3 +8,8 @@ export interface MidiData {
 export interface ActiveFrameForNotes {
     [midi: string]: ActiveFrames;
 }
+
+export interface NoteBoundaries {
+    startFrame: number;
+    endFrame: number;
+}
