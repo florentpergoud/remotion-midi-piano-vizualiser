@@ -1,15 +1,20 @@
-import { BLACK_NOTES_MIDI, BLACK_NOTE_WIDH_IN_PERCENT, FIRST_NOTE, WHITE_NOTE_WIDH_IN_PERCENT } from '../constant';
+import { BLACK_NOTE_WIDH_IN_PERCENT, FIRST_NOTE, WHITE_NOTE_WIDH_IN_PERCENT } from '../constant';
 import { NoteBoundaries } from '../interface';
 
-export const isBlackNote = (midi: number) => {
-    return BLACK_NOTES_MIDI.includes(midi);
+export const isBlackKeyboardNote = (midi: number): boolean => {
+    if ((midi - 22) % 12 === 0) return true;
+    if ((midi - 25) % 12 === 0) return true;
+    if ((midi - 27) % 12 === 0) return true;
+    if ((midi - 30) % 12 === 0) return true;
+    if ((midi - 32) % 12 === 0) return true;
+    return false;
 };
 
 const countWhiteNotesAtLeftOfNote = (midi: number) => {
     let whiteNotesAtLeft = 0;
 
     for (let currentMidi = FIRST_NOTE; currentMidi < midi; currentMidi++) {
-        const isMidiBlackNote = isBlackNote(currentMidi);
+        const isMidiBlackNote = isBlackKeyboardNote(currentMidi);
         if (!isMidiBlackNote) {
             whiteNotesAtLeft++;
         }

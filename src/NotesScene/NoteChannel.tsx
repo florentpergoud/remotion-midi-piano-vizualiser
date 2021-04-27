@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { BASE_NOTE_HEIGHT, BLACK_NOTE_WIDH_IN_PERCENT, WHITE_NOTE_WIDH_IN_PERCENT } from '../constant';
 import { NoteBoundaries } from '../interface';
-import { getLeftPositionForNote, groupFrames, isBlackNote } from './utils';
+import { getLeftPositionForNote, groupFrames, isBlackKeyboardNote } from './utils';
 
 interface Props {
     midiNote: string;
@@ -12,7 +12,7 @@ interface Props {
 
 export const NoteChannel: FunctionComponent<Props> = ({ midiNote, frame, activeFrames }) => {
     const intMidiNote = parseInt(midiNote);
-    const isKeyboardNoteBlack = isBlackNote(intMidiNote);
+    const isKeyboardNoteBlack = isBlackKeyboardNote(intMidiNote);
 
     const leftPosition = getLeftPositionForNote(intMidiNote, isKeyboardNoteBlack);
     const groupedFrames = groupFrames(activeFrames);
