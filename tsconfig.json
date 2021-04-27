@@ -6,9 +6,14 @@
 		"outDir": "./dist",
 		"strict": true,
 		"noEmit": true,
-		"lib": ["es2015", "DOM"],
+		"lib": [
+			"es2015",
+			"DOM"
+		],
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true
 	}
 }

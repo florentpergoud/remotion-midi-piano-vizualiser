@@ -3,7 +3,7 @@ import midiData from './api/midi.json';
 import { FPS } from './constant';
 import { PianoComposition } from './PianoComposition';
 
-const SONG_DURATION = midiData.length;
+const SONG_DURATION = Math.floor(midiData.duration * FPS);
 
 const HEIGHT = 1080;
 const WIDTH = 1920;
