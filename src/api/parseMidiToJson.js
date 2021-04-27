@@ -1,16 +1,16 @@
 import fs from 'fs';
 import toneJsMidi from '@tonejs/midi';
 
-const { Midi } = toneJsMidi;
-
 const FPS = 60;
 
+const { Midi } = toneJsMidi;
+
 const isNoteActive = (currentSecondInVideo, note) => {
-    if (note.time > currentSecondInVideo) {
+    if (note.time >= currentSecondInVideo) {
         return false;
     }
 
-    if (note.time + note.duration < currentSecondInVideo) {
+    if (note.time + note.duration <= currentSecondInVideo) {
         return false;
     }
 
@@ -30,7 +30,10 @@ const convertMidiToActiveFramePerNote = (midi) => {
 
     for (let frame = 0; frame < midi.duration * FPS; frame++) {
         const currentSecondInVideo = frame / FPS;
-        const activesNotesAtFrame = getActiveNotesFromTrack(currentSecondInVideo, midi.tracks[0]);
+        const activesNotesAtFrame = [
+            ...getActiveNotesFromTrack(currentSecondInVideo, midi.tracks[0]),
+            ...getActiveNotesFromTrack(currentSecondInVideo, midi.tracks[1]),
+        ];
 
         activesNotesAtFrame.map((note) => {
             if (!dataPerFrame[note.midi]) {
@@ -45,6 +48,7 @@ const convertMidiToActiveFramePerNote = (midi) => {
 const readMidi = () => {
     const midiData = fs.readFileSync('input.mid');
     const midi = new Midi(midiData);
+    console.log('midi', midi);
 
     const activeFramePerNote = convertMidiToActiveFramePerNote(midi);
     const dataToWrite = { activeFramePerNote, duration: midi.duration };

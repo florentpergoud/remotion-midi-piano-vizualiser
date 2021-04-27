@@ -12,12 +12,17 @@ export const NotesScene: FunctionComponent = () => {
     const frame = useCurrentFrame();
 
     const renderChannels = (midiNote: string) => (
-        <NoteChannel midiNote={midiNote} activeFrames={midiData.activeFramePerNote[midiNote]} frame={frame} />
+        <NoteChannel
+            key={`noteContainer-${midiNote}`}
+            midiNote={midiNote}
+            activeFrames={midiData.activeFramePerNote[midiNote]}
+            frame={frame}
+        />
     );
 
     return (
         <Container>
-            <MovingNoteContainer $translateY={frame * BASE_NOTE_HEIGHT}>
+            <MovingNoteContainer style={{ '--translateY': `${frame * BASE_NOTE_HEIGHT}%` }}>
                 {Object.keys(midiData.activeFramePerNote).map(renderChannels)}
             </MovingNoteContainer>
         </Container>
@@ -29,8 +34,8 @@ const Container = styled.div`
     width: 100%;
 `;
 
-const MovingNoteContainer = styled.div<{ $translateY: number }>`
-    transform: translateY(${({ $translateY }) => `${$translateY}%`});
+const MovingNoteContainer = styled.div`
+    transform: translateY(var(--translateY));
     width: 100%;
     height: 100%;
 `;

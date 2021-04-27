@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { BASE_NOTE_HEIGHT } from '../constant';
+import { BASE_NOTE_HEIGHT, BLACK_NOTE_WIDH_IN_PERCENT, WHITE_NOTE_WIDH_IN_PERCENT } from '../constant';
 import { NoteBoundaries } from '../interface';
-import { getLeftPositionForNote, groupFrames } from './utils';
+import { getLeftPositionForNote, groupFrames, isBlackNote } from './utils';
 
 interface Props {
     midiNote: string;
@@ -11,11 +11,15 @@ interface Props {
 }
 
 export const NoteChannel: FunctionComponent<Props> = ({ midiNote, frame, activeFrames }) => {
-    const leftPosition = getLeftPositionForNote(parseInt(midiNote));
+    const intMidiNote = parseInt(midiNote);
+    const isKeyboardNoteBlack = isBlackNote(intMidiNote);
+
+    const leftPosition = getLeftPositionForNote(intMidiNote, isKeyboardNoteBlack);
     const groupedFrames = groupFrames(activeFrames);
+    const displayedFrames = 980;
 
     const renderNote = (note: NoteBoundaries) => {
-        if (frame + 980 < note.startFrame) return null;
+        if (frame + displayedFrames < note.startFrame) return null;
         if (note.endFrame < frame) return null;
 
         const durationInFrame = note.endFrame - note.startFrame;
@@ -30,16 +34,21 @@ export const NoteChannel: FunctionComponent<Props> = ({ midiNote, frame, activeF
     };
 
     return (
-        <NoteContainer key={`midiNote-${midiNote}`} $left={`${leftPosition}%`}>
+        <NoteContainer
+            key={`midiNote-${midiNote}`}
+            $left={`${leftPosition}%`}
+            $isKeyboardNoteBlack={isKeyboardNoteBlack}
+        >
             {groupedFrames.map(renderNote)}
         </NoteContainer>
     );
 };
 
-const NoteContainer = styled.div<{ $left: string }>`
+const NoteContainer = styled.div<{ $left: string; $isKeyboardNoteBlack: boolean }>`
     position: absolute;
     height: 100%;
-    width: 1.8%;
+    width: ${({ $isKeyboardNoteBlack }) =>
+        ($isKeyboardNoteBlack ? BLACK_NOTE_WIDH_IN_PERCENT : WHITE_NOTE_WIDH_IN_PERCENT) - 0.2}%;
     top: 0;
     left: ${({ $left }) => $left};
 `;
