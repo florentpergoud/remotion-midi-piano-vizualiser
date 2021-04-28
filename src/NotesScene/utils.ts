@@ -1,12 +1,18 @@
-import { BLACK_NOTE_WIDH_IN_PERCENT, FIRST_NOTE, WHITE_NOTE_WIDH_IN_PERCENT } from '../constant';
+import { FIRST_NOTE, WHITE_NOTE_WIDH_IN_PERCENT } from '../constant';
 import { NoteBoundaries } from '../interface';
 
-export const isBlackKeyboardNote = (midi: number): boolean => {
-    if ((midi - 22) % 12 === 0) return true;
-    if ((midi - 25) % 12 === 0) return true;
-    if ((midi - 27) % 12 === 0) return true;
-    if ((midi - 30) % 12 === 0) return true;
-    if ((midi - 32) % 12 === 0) return true;
+const isASharp = (midiNumber: number) => (midiNumber - 22) % 12 === 0;
+const isCSharp = (midiNumber: number) => (midiNumber - 25) % 12 === 0;
+const isDSharp = (midiNumber: number) => (midiNumber - 27) % 12 === 0;
+const isFSharp = (midiNumber: number) => (midiNumber - 30) % 12 === 0;
+const isGSharp = (midiNumber: number) => (midiNumber - 32) % 12 === 0;
+
+export const isBlackKeyboardNote = (midiNumber: number): boolean => {
+    if (isASharp(midiNumber)) return true;
+    if (isCSharp(midiNumber)) return true;
+    if (isDSharp(midiNumber)) return true;
+    if (isFSharp(midiNumber)) return true;
+    if (isGSharp(midiNumber)) return true;
     return false;
 };
 
@@ -23,11 +29,20 @@ const countWhiteNotesAtLeftOfNote = (midi: number) => {
     return whiteNotesAtLeft;
 };
 
+const getBlackKeyBoardNoteOffset = (midiNumber: number): number => {
+    if (isASharp(midiNumber)) return -0.3;
+    if (isCSharp(midiNumber)) return -0.85;
+    if (isDSharp(midiNumber)) return -0.4;
+    if (isFSharp(midiNumber)) return -1;
+    if (isGSharp(midiNumber)) return -0.6;
+    return 0;
+};
+
 export const getLeftPositionForNote = (midi: number, isKeyboardNoteBlack: boolean): number => {
     const whiteNotesAtLeft = countWhiteNotesAtLeftOfNote(midi);
-    const leftPosition =
-        WHITE_NOTE_WIDH_IN_PERCENT * whiteNotesAtLeft + (isKeyboardNoteBlack ? -0.5 * BLACK_NOTE_WIDH_IN_PERCENT : 0);
-    return leftPosition;
+    const leftPosition = WHITE_NOTE_WIDH_IN_PERCENT * whiteNotesAtLeft;
+    const blackKeyboardNoteOffset = isKeyboardNoteBlack ? getBlackKeyBoardNoteOffset(midi) : 0;
+    return leftPosition + blackKeyboardNoteOffset;
 };
 
 export const groupFrames = (activeFrames: number[]): Array<NoteBoundaries> => {

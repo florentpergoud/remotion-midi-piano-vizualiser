@@ -36,7 +36,7 @@ export const NoteChannel: FunctionComponent<Props> = ({ midiNote, frame, activeF
     return (
         <NoteContainer
             key={`midiNote-${midiNote}`}
-            $left={`${leftPosition}%`}
+            $left={`${leftPosition + 0.05}%`}
             $isKeyboardNoteBlack={isKeyboardNoteBlack}
         >
             {groupedFrames.map(renderNote)}
@@ -48,7 +48,7 @@ const NoteContainer = styled.div<{ $left: string; $isKeyboardNoteBlack: boolean 
     position: absolute;
     height: 100%;
     width: ${({ $isKeyboardNoteBlack }) =>
-        ($isKeyboardNoteBlack ? BLACK_NOTE_WIDH_IN_PERCENT : WHITE_NOTE_WIDH_IN_PERCENT) - 0.2}%;
+        ($isKeyboardNoteBlack ? BLACK_NOTE_WIDH_IN_PERCENT : WHITE_NOTE_WIDH_IN_PERCENT) - 0.3}%;
     top: 0;
     left: ${({ $left }) => $left};
 `;
