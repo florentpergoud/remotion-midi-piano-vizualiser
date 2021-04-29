@@ -31,4 +31,5 @@ export const PianoScene: FunctionComponent = () => {
 const PianoContainer = styled.div`
     position: absolute;
     bottom: 0;
+    background-color: 'black';
 `;

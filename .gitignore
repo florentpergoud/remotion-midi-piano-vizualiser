@@ -5,3 +5,5 @@ dist
 out.mp4
 src/api/rawData.json
 secrets.json
+input.mp3
+input.mid

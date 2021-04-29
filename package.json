@@ -4,7 +4,7 @@
     "description": "A weather video generator",
     "scripts": {
         "start": "remotion preview src/index.tsx",
-        "build": "node src/api/parseMidiToJson.js && remotion render src/index.tsx PianoComposition out.mp4",
+        "build": "/Applications/VLC.app/Contents/MacOS/VLC -vvv --sout \"#transcode{acodec=mp3,ab=128,channels=2,samplerate=44100}:std{access=file,mux=raw,dst=input.mp3}\" input.mid vlc://quit && node src/api/parseMidiToJson.js && remotion render src/index.tsx PianoComposition out.mp4",
         "upgrade": "remotion upgrade",
         "server": "ts-node server.tsx",
         "test": "eslint src --ext ts,tsx,js,jsx && tsc",
@@ -48,6 +48,5 @@
         "commitizen": "^4.2.3",
         "eslint-config-prettier": "^8.1.0",
         "eslint-plugin-prettier": "^3.3.1"
-    },
-    "type": "module"
+    }
 }

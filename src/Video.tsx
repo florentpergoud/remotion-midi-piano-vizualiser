@@ -11,7 +11,7 @@ const WIDTH = 1920;
 export const RemotionVideo: React.FC = () => {
     return (
         <Composition
-            id="PianoScene"
+            id="PianoComposition"
             component={PianoComposition}
             durationInFrames={SONG_DURATION}
             fps={FPS}

@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from 'react';
-import { AbsoluteFill, Sequence } from 'remotion';
+import  { FunctionComponent } from 'react';
+import { Audio, AbsoluteFill, Sequence } from 'remotion';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../assets/theme';
 import { NotesScene } from './NotesScene/NotesScene';
 import { PianoScene } from './PianoScene/PianoScene';
+import audio from '../input.mp3'
 
 export const PianoComposition: FunctionComponent = () => {
     return (
@@ -17,6 +18,7 @@ export const PianoComposition: FunctionComponent = () => {
             <Sequence from={0} durationInFrames={Infinity} name="Piano">
                 <PianoScene />
             </Sequence>
+            <Audio src={audio}/>
         </ThemeProvider>
     );
 };

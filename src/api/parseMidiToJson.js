@@ -1,5 +1,5 @@
-import fs from 'fs';
-import toneJsMidi from '@tonejs/midi';
+const fs = require('fs');
+const toneJsMidi = require('@tonejs/midi');
 
 const FPS = 60;
 
@@ -48,7 +48,6 @@ const convertMidiToActiveFramePerNote = (midi) => {
 const readMidi = () => {
     const midiData = fs.readFileSync('input.mid');
     const midi = new Midi(midiData);
-    console.log('midi', midi);
 
     const activeFramePerNote = convertMidiToActiveFramePerNote(midi);
     const dataToWrite = { activeFramePerNote, duration: midi.duration };
