@@ -2,6 +2,7 @@ export const theme = {
     colors: {
         backgroundColor: '#212121',
         white: '#FFFFFF',
-        note: '#34acbc',
+        rightHandNote: '#00adff',
+        leftHandNote: '#F76C5E',
     },
 };

@@ -2,11 +2,11 @@ import { FunctionComponent } from 'react';
 import { useCurrentFrame } from 'remotion';
 import styled from 'styled-components';
 import midi from '../api/midi.json';
+import { BASE_NOTE_HEIGHT } from '../constant';
 import { MidiData } from '../interface';
 import { NoteChannel } from './NoteChannel';
 
 const midiData: MidiData = midi;
-const BASE_NOTE_HEIGHT = 0.1;
 
 export const NotesScene: FunctionComponent = () => {
     const frame = useCurrentFrame();

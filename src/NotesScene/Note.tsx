@@ -15,6 +15,8 @@ const Container = styled.div<{ $bottom: string; $height: string }>`
     width: 100%;
     bottom: ${({ $bottom }) => $bottom};
     left: 0;
-    background-color: ${({ theme }) => theme.colors.note};
+    background-color: ${({ theme }) => theme.colors.rightHandNote};
     border-radius: 12px;
+    box-shadow: inset 10px 6px 24px 0px rgba(255, 255, 255, 0.3), inset -10px -6px 24px 0px rgba(0, 0, 0, 0.5),
+        0.4em 0.4em rgba(0, 0, 0, 0.4);
 `;
