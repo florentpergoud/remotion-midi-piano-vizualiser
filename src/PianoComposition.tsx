@@ -14,9 +14,7 @@ export const PianoComposition: FunctionComponent = () => {
             <AbsoluteFill>
                 <Background />
             </AbsoluteFill>
-            <Sequence from={0} durationInFrames={TITLE_DURATION} name="Title">
-                <TitleScene />
-            </Sequence>
+
             <Sequence from={TITLE_DURATION} durationInFrames={Infinity} name="Notes">
                 <NotesScene delay={DELAY_BEFORE_FIRST_NOTE} />
             </Sequence>
@@ -25,6 +23,9 @@ export const PianoComposition: FunctionComponent = () => {
             </Sequence>
             <Sequence from={0} durationInFrames={Infinity} name="Piano">
                 <PianoScene />
+            </Sequence>
+            <Sequence from={0} durationInFrames={Infinity} name="Title">
+                <TitleScene />
             </Sequence>
         </ThemeProvider>
     );

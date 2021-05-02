@@ -1,4 +1,5 @@
 import { Composition } from 'remotion';
+import '../assets/font.css';
 import midiData from './api/midi.json';
 import { FPS } from './constant';
 import './customPianoStyles.css'; // import a set of piano color overrides

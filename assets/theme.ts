@@ -5,4 +5,7 @@ export const theme = {
         rightHandNote: '#00adff',
         leftHandNote: '#F76C5E',
     },
+    fonts: {
+        roboto: 'Roboto',
+    },
 };

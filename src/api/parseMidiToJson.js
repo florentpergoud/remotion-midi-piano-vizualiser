@@ -25,10 +25,18 @@ const getActiveNotesFromTrack = (currentSecondInVideo, track) => {
         }));
 };
 
+const printProgress = (frame, totalFrames) => {
+    const progress = ((frame / totalFrames) * 100).toFixed(2);
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+    process.stdout.write(`Converting midi to jsonc : ${progress}% (${frame}/${totalFrames})`);
+};
+
 const convertMidiToActiveFramePerNote = (midi) => {
     const dataPerFrame = {};
-
-    for (let frame = 0; frame < midi.duration * FPS; frame++) {
+    const totalFrames = Math.round(midi.duration * FPS);
+    for (let frame = 0; frame < totalFrames; frame++) {
+        printProgress(frame, totalFrames);
         const currentSecondInVideo = frame / FPS;
         const activesNotesAtFrame = [
             ...getActiveNotesFromTrack(currentSecondInVideo, midi.tracks[0]),
