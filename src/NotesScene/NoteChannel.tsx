@@ -9,9 +9,10 @@ interface Props {
     midiNote: string;
     frame: number;
     activeFrames: Array<number>;
+    delay: number;
 }
 
-export const NoteChannel: FunctionComponent<Props> = ({ midiNote, frame, activeFrames }) => {
+export const NoteChannel: FunctionComponent<Props> = ({ midiNote, frame, activeFrames, delay }) => {
     const intMidiNote = parseInt(midiNote);
     const isKeyboardNoteBlack = isBlackKeyboardNote(intMidiNote);
 
@@ -19,16 +20,18 @@ export const NoteChannel: FunctionComponent<Props> = ({ midiNote, frame, activeF
     const groupedFrames = groupFrames(activeFrames);
     const displayedFrames = 980;
 
+    const frameWithDelay = frame - delay;
+
     const renderNote = (note: NoteBoundaries) => {
-        if (frame + displayedFrames < note.startFrame) return null;
-        if (note.endFrame < frame) return null;
+        if (frameWithDelay + displayedFrames < note.startFrame) return null;
+        if (note.endFrame < frameWithDelay) return null;
 
         const durationInFrame = note.endFrame - note.startFrame;
 
         return (
             <Note
                 key={`${note.startFrame} -> ${note.endFrame} -${midiNote}`}
-                bottom={`${note.startFrame * BASE_NOTE_HEIGHT}%`}
+                bottom={`${(note.startFrame + delay) * BASE_NOTE_HEIGHT}%`}
                 height={`${durationInFrame * BASE_NOTE_HEIGHT}%`}
             />
         );

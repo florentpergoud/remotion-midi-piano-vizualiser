@@ -8,7 +8,11 @@ import { NoteChannel } from './NoteChannel';
 
 const midiData: MidiData = midi;
 
-export const NotesScene: FunctionComponent = () => {
+interface Props {
+    delay: number;
+}
+
+export const NotesScene: FunctionComponent<Props> = ({ delay }) => {
     const frame = useCurrentFrame();
 
     const renderChannels = (midiNote: string) => (
@@ -17,6 +21,7 @@ export const NotesScene: FunctionComponent = () => {
             midiNote={midiNote}
             activeFrames={midiData.activeFramePerNote[midiNote]}
             frame={frame}
+            delay={delay}
         />
     );
 
