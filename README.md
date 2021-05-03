@@ -1,49 +1,36 @@
-# Remotion video
-
-<p align="center">
-  <a href="https://github.com/JonnyBurger/remotion-logo">
-    <img src="https://github.com/JonnyBurger/remotion-logo/raw/main/withtitle/element-0.png">
-  </a>
-</p>
-
-Welcome to your Remotion project!
+# Welcome to my Piano Midi Visualizer project!
 
 ## Commands
 
-**Start Preview**
+**Start Preview** (as for every Remotion project)
 
 ```console
 npm start
 ```
 
 **Render video**
+To render a video you must :
 
-```console
-npm run build
-```
+-   Put a midi file named `input.mid` at project root
+-   ` node src/api/getInfo.js` to get the tracks data if you need them
+-   Fill `src/api/input.json` file with the song data to be shown in the video intro
+-   Modify your package.json `build` command if you are not on macOS to replace VLC install link
+-   `yarn run build`
 
-**Server render demo**
+**Output example**
+With this midi file `./example.mid` you will get this video :
+[![Youtube thumbnail](https://img.youtube.com/vi/stO7DYwkjE4/0.jpg)](https://www.youtube.com/watch?v=stO7DYwkjE4)
 
-```console
-npm run server
-```
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-See [docs for server-side rendering](https://www.remotion.dev/docs/ssr) here.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
 
-**Upgrade Remotion**
-
-```console
-npm run upgrade
-```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/JonnyBurger/remotion/issues/new).
-
-## License
-
-Notice that a company license is needed. Read [the terms here](https://github.com/JonnyBurger/remotion/blob/main/LICENSE.md).
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.

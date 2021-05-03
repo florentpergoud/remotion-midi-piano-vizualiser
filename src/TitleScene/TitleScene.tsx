@@ -18,8 +18,8 @@ export const TitleScene: FunctionComponent = () => {
         <Container $marginBottom={marginBottom} $scale={scale}>
             <TextContainer $translateX={translateX} $translateY={translateY}>
                 <Title as="h1">{title}</Title>
-                <Author as="h2">{author}</Author>
-                <BaseText as="h3">{`Midi file by ${midiCreator}`}</BaseText>
+                {author && <Author as="h2">{author}</Author>}
+                {midiCreator && <BaseText as="h3">{`Midi file by ${midiCreator}`}</BaseText>}
             </TextContainer>
         </Container>
     );
